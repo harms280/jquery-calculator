@@ -21,6 +21,7 @@ $(document).ready(function(){
 	});
 
 	$('.operator').not('#cancel').not('#calc').click(function() {
+		if(op.length === 0) {
 		console.log($(this).text());
 		// arg1= parseInt($('div#screen').text());
 		var operator = $(this).text();
@@ -43,13 +44,14 @@ $(document).ready(function(){
 			equation = function (a,b) {
 					return a + b;
 				};
-		} else {
+		} else if ($(this).text() === "\367") {
 			// if($(this).text() === "÷") {
 			$('div#screen').append(operator);
 			op = operator;
 			equation = function (a,b) {
 				return a / b;
 			};
+		}
 		}
 	});
 
